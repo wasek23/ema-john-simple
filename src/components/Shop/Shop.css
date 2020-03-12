@@ -4,6 +4,7 @@
 
 .shopContainer{
     display: flex;
+    margin-top: 20px;
 }
 .productsContainer{
     width: 70%;
