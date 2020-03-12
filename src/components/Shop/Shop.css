@@ -1,0 +1,42 @@
+.textCenter{
+    text-align: center;
+}
+
+.shopContainer{
+    display: flex;
+}
+.productsContainer{
+    width: 70%;
+    margin-right: 5px;
+    border-right: 1px solid #dedede;
+    margin-left: 10%;
+    padding: 0 20px;
+}
+
+.cartContainer{
+    width: 30%;
+    padding: 0 10px;
+}
+.cartContainer > .textCenter{
+    margin: 20px 0;
+}
+
+.cartPrice{
+    padding: 0 20px;
+}
+.cartPrice .cartPriceRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.cartTotalRow{
+    color: #b12704;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 22px;
+    border-top: 1px solid gray;
+    margin-top: 10px;
+    padding-top: 10px;
+}
