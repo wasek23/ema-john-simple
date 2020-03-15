@@ -1,80 +1,65 @@
-import React, { useState } from 'react';
-import './Shop.css';
+import React, { useState, useEffect } from 'react';
 import fakeData from '../../fakeData';
 import Product from '../Product/Product';
+import { Link } from 'react-router-dom';
+import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
+import CartDetails from './CartDetails';
 
 const Shop = () => {
     // Get 10 Products Data
     const first10Data = fakeData.slice(0, 10);
     const [products, setProducts] = useState(first10Data);
-
-    // Add items in cart when "Add to cart" btn clicked
     const [cart, setCart] = useState([]);
-    const addProductToCart = (product) => {
-        const newCart = [...cart, product];
+
+    useEffect(() => {
+        const savedCart = getDatabaseCart();
+        const productKeys = Object.keys(savedCart);
+        // const productValues = Object.values(savedCart);
+
+        const cartProducts = productKeys.map(key => {
+            const product = fakeData.find(prod => prod.key === key);
+            product.quantity = savedCart[key];
+            return product;
+        });
+        setCart(cartProducts);
+    }, []);
+
+    // Add product in cart when "Add to cart" btn clicked
+    const addProductToCart = product => {
+        const toBeAddedKey = product.key;
+        const sameProduct = cart.find(prod => prod.key === toBeAddedKey);
+
+        let count = 1;
+        let newCart;
+        if (sameProduct) {
+            count = sameProduct.quantity + 1;
+            sameProduct.quantity = count;
+
+            const othersProduct = cart.filter(prod => prod.key !== toBeAddedKey);
+            newCart = [...othersProduct, sameProduct];
+        } else {
+            product.quantity = 1;
+            newCart = [...cart, product];
+        }
+
         setCart(newCart);
+        addToDatabaseCart(product.key, count);
     }
-
-    // Get cart values
-    const itemsPrice = cart.reduce((prices, prod) => prices + prod.price, 0);
-
-    let shippingPrice = 0;
-    if (itemsPrice > 1000) {
-        shippingPrice = 0;
-    } else if (itemsPrice > 500) {
-        shippingPrice = 4.99;
-    } else if (itemsPrice > 250) {
-        shippingPrice = 9.99;
-    } else if (itemsPrice > 0) {
-        shippingPrice = 14.99;
-    }
-
-    const subTotal = itemsPrice + shippingPrice;
-    const tax = subTotal / 15;
-    const grandTotal = subTotal + tax;
 
     return (
-        <div className="shopContainer">
+        <div className="productPage">
             <div className="productsContainer">
                 {
-                    products.map(prod => <Product product={prod} addProductToCart={addProductToCart}></Product>)
+                    products.map(prod => <Product key={prod.key} showCartBtn={true} product={prod} addProductToCart={addProductToCart}></Product>)
                 }
             </div>
 
             <div className="cartContainer">
-                <h2 className="textCenter">Order Summary</h2>
-                <p className="textCenter">Item Ordered: {cart.length}</p>
-
-                <div className="cartPrice">
-                    <div className="cartPriceRow">
-                        <small>Items: </small>
-                        <small>$ {itemsPrice.toFixed(2)}</small>
-                    </div>
-
-                    <div className="cartPriceRow">
-                        <small>Shipping & Handling:	 </small>
-                        <small>$ {shippingPrice.toFixed(2)}</small>
-                    </div>
-
-                    <div className="cartPriceRow">
-                        <small>Total before tax: </small>
-                        <small>$ {subTotal.toFixed(2)}</small>
-                    </div>
-
-                    <div className="cartPriceRow">
-                        <small>Estimated Tax: </small>
-                        <small>$ {tax.toFixed(2)}</small>
-                    </div>
-
-                    <div className="cartPriceRow cartTotalRow">
-                        <h3>Order Total: </h3>
-                        <h3>$ {grandTotal.toFixed(2)}</h3>
-                    </div>
-                </div>
-
-                <div className="textCenter">
-                    <button className="btn">Review your order</button>
-                </div>
+                <CartDetails cart={cart}>
+                    <Link to="/cart-review">
+                        <button className="btn">Review your order</button>
+                    </Link>
+                </CartDetails>
             </div>
         </div>
     );

@@ -1,3 +1,168 @@
-.App-link {
-  color: #61dafb;
+/* Init */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.btn{
+  border: none;
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  min-width: 150px;
+  border-radius: 5px;
+  background-color: #ff9800;
+  cursor: pointer;
+}
+small{
+  font-size: 14px;
+}
+.textCenter{
+  text-align: center;
+}
+
+.link {
+  color: #ff9800;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Header */
+.header{
+  text-align: center;
+}
+
+img.logo{
+  height: 80px;
+}
+
+.header nav{
+  margin-top: 20px;
+  background-color: #333;
+}
+.header nav a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  display: inline-block;
+
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+.header nav a:hover{
+  background-color: #e3e3e3;
+  color: #333;
+}
+
+/* Product Page */
+.productPage{
+  display: flex;
+  margin-top: 20px;
+}
+.productsContainer{
+  width: 70%;
+  margin-right: 5px;
+  border-right: 1px solid #dedede;
+  margin-left: 10%;
+  padding: 0 20px;
+}
+
+.cartContainer{
+  width: 30%;
+  padding: 0 10px;
+}
+.cartContainer > .textCenter{
+  margin: 20px 0;
+}
+.cartPrice{
+  padding: 0 20px;
+}
+.cartPrice .cartPriceRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.cartTotalRow{
+  color: #b12704;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  border-top: 1px solid gray;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+/* Product */
+.product{
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  
+}
+.product:not(:last-child){
+  border-bottom: 1px solid #dedede;
+}
+
+.product .imgWrap{
+  width: 30%;
+  margin-right: 30px;
+}
+.name{
+  color: #0096ff;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.product .information{
+  display: flex;
+  align-items: center;
+}
+.product .information > div{
+  width: 50%;
+  margin-right: 10px;
+}
+
+.price{
+  margin: 15px 0 20px 0;
+  font-size: 18px;
+  color: #ff9800;
+}
+
+.product .information .reviewStar svg{
+  color: #ff9800;
+  font-size: 13px;
+}
+
+/* Single Product */
+.singleProductPage{
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Manage Inventory */
+
+
+/* Url Error */
+.notFound{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 100px 0;
+}
+.notFound h1{
+  font-weight: 600;
+  font-size: 40px;
+}
+.notFound h2{
+  font-size: 60px;
+  font-weight: 100;
+  margin-bottom: 10px;
 }
