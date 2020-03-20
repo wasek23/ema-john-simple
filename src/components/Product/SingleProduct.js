@@ -7,7 +7,6 @@ const SingleProduct = () => {
     const { productKey } = useParams();
 
     const product = fakeData.find(prod => prod.key === productKey);
-    console.log(product);
     return (
         <div className="singleProductPage">
             <Product showCartBtn={false} product={product}></Product>

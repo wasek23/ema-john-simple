@@ -4,16 +4,20 @@ import fakeData from '../../fakeData';
 import CartItem from './CartItem';
 import CartDetails from '../Shop/CartDetails';
 import happyImg from '../../img/giphy.gif';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/useAuth';
 
 const Review = () => {
     const [cart, setCart] = useState([]);
+
+    const auth = useAuth();
 
     const [orderPlaced, setOrderPlaced] = useState(false);
     const orderBtnHandler = () => {
         setCart([]);
         setOrderPlaced(true);
         processOrder();
-        console.log(orderPlaced + "Thanks for your Order !!!!!!");
+        alert("Thanks for your Order !!!!!!");
     }
 
     useEffect(() => {
@@ -50,11 +54,18 @@ const Review = () => {
                     cart.map(prod => <CartItem key={prod.key} removeProduct={removeProduct} product={prod}></CartItem>)
                 }
                 {thankYou}
+                {
+                    !cart.length && <h1>Your cart is empty. <a href="/shop">Shop something</a></h1>
+                }
             </div>
 
             <div className="cartContainer">
                 <CartDetails cart={cart}>
-                    <button onClick={orderBtnHandler} className="btn">Place order</button>
+                    <Link to="/shipment">
+                        {
+                            auth.user ? <button className="btn">Proceed Checkout</button> : <button className="btn">Login to Proceed</button>
+                        }
+                    </Link>
                 </CartDetails>
             </div>
         </div>

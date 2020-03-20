@@ -60,6 +60,8 @@ const CartDetails = (props) => {
 
             <div className="textCenter">
                 {props.children}
+
+                <p>{}</p>
             </div>
         </div>
     );

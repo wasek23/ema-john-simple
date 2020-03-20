@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const CartItem = (props) => {
     const { img, name, price, quantity, key } = props.product;
-    // console.log(props.product);
 
     return (
         <div className="product">
