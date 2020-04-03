@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
-import fakeData from '../../fakeData';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import CartItem from './CartItem';
 import CartDetails from '../Shop/CartDetails';
-import happyImg from '../../img/giphy.gif';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Login/useAuth';
 
@@ -12,26 +10,25 @@ const Review = () => {
 
     const auth = useAuth();
 
-    const [orderPlaced, setOrderPlaced] = useState(false);
-    const orderBtnHandler = () => {
-        setCart([]);
-        setOrderPlaced(true);
-        processOrder();
-        alert("Thanks for your Order !!!!!!");
-    }
-
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
         // const productCounts = Object.values(savedCart);
 
-        const cartProducts = productKeys.map(key => {
-            const product = fakeData.find(prod => prod.key === key);
-            product.quantity = savedCart[key];
-            return product;
+        fetch('http://localhost:8080/getProductsByKey', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productKeys)
+        }).then(res => res.json()).then(data => {
+            const cartProducts = productKeys.map(key => {
+                const product = data.find(prod => prod.key === key);
+                product.quantity = savedCart[key];
+                return product;
+            });
+            setCart(cartProducts);
         });
-
-        setCart(cartProducts);
     }, []);
 
     // Remove product from cart when "Remove" btn clicked
@@ -43,17 +40,12 @@ const Review = () => {
     }
 
 
-    let thankYou;
-    if (orderPlaced) {
-        thankYou = <img src={happyImg} alt="Happy Img" />
-    }
     return (
         <div className="productPage">
             <div className="productsContainer">
                 {
                     cart.map(prod => <CartItem key={prod.key} removeProduct={removeProduct} product={prod}></CartItem>)
                 }
-                {thankYou}
                 {
                     !cart.length && <h1>Your cart is empty. <a href="/shop">Shop something</a></h1>
                 }

@@ -1,9 +1,24 @@
 import React from 'react';
 
 const Inventory = () => {
+    const addInventory = () => {
+        // console.log('before post', product.length);
+
+        // fetch('http://localhost:8080/addProduct', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(product)
+        // }).then(res => res.json()).then(data => {
+        //     console.log('Successfully post', data);
+        // });
+    }
+
     return (
         <div>
-            <h1 className="textCenter">Manage inventory coming soon.....</h1>
+            <h1 className="textCenter">Inventory coming soon.....</h1>
+            <button onClick={addInventory} className="btn">Add inventory</button>
         </div>
     );
 };

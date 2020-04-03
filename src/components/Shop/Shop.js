@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import fakeData from '../../fakeData';
 import Product from '../Product/Product';
 import { Link } from 'react-router-dom';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import CartDetails from './CartDetails';
 
 const Shop = () => {
-    // Get 10 Products Data
-    const first10Data = fakeData.slice(0, 10);
-    const [products, setProducts] = useState(first10Data);
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/products').then(res => res.json()).then(data => {
+            setProducts(data);
+        });
+    }, []);
 
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
         // const productValues = Object.values(savedCart);
 
-        const cartProducts = productKeys.map(key => {
-            const product = fakeData.find(prod => prod.key === key);
-            product.quantity = savedCart[key];
-            return product;
-        });
-        setCart(cartProducts);
-    }, []);
+        if (products.length) {
+            const cartProducts = productKeys.map(key => {
+                const product = products.find(prod => prod.key === key);
+                product.quantity = savedCart[key];
+                return product;
+            });
+            setCart(cartProducts);
+        }
+    }, [products]);
 
     // Add product in cart when "Add to cart" btn clicked
     const addProductToCart = product => {

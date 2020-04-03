@@ -23,7 +23,7 @@ const Header = () => {
             <nav>
                 <a href="/shop">Shop</a>
                 <a href="/cart-review">Order Review</a>
-                <a href="/inventory">Manage Inventory</a>
+                <a href="/inventory">Inventory</a>
             </nav>
         </div>
     );
