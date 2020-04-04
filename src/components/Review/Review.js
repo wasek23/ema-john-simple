@@ -15,7 +15,7 @@ const Review = () => {
         const productKeys = Object.keys(savedCart);
         // const productCounts = Object.values(savedCart);
 
-        fetch('http://localhost:8080/getProductsByKey', {
+        fetch('https://ema-john.herokuapp.com/getProductsByKey', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

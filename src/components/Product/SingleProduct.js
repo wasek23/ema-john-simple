@@ -7,7 +7,7 @@ const SingleProduct = () => {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8080/product/' + productKey).then(res => res.json()).then(data => {
+        fetch('https://ema-john.herokuapp.com/product/' + productKey).then(res => res.json()).then(data => {
             setProduct(data);
         });
     }, [productKey]);
