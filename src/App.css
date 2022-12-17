@@ -1,0 +1,148 @@
+:root {
+	--blue-50: #95A0A7;
+	--blue10: #2a414f;
+	--blue40: #1c2b35;
+	--blue70: #0e161a;
+	--orange5: #ffe0b3;
+	--orange10: #ff9900;
+	--orange40: #995c00;
+	--orange70: #4c2e00;
+	--red30: #ff3030;
+	--red40: #eb5757;
+	--black: #000;
+	--white: #fff;
+}
+
+* {
+	font-family: 'Lato', sans-serif;
+	/* color: var(--black); */
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* Typography */
+h1 {
+	font-size: 100px;
+	line-height: 120px;
+	font-weight: 300;
+	letter-spacing: -0.015em;
+}
+
+h2 {
+	font-size: 62px;
+	line-height: 74px;
+	font-weight: 300;
+	letter-spacing: -0.005em;
+}
+
+h3 {
+	font-size: 50px;
+	line-height: 60px;
+	font-weight: 400;
+}
+
+h4 {
+	font-size: 35px;
+	line-height: 42px;
+	font-weight: 400;
+	letter-spacing: 0.0025em;
+}
+
+h5 {
+	font-size: 25px;
+	line-height: 30px;
+	font-weight: 400;
+}
+
+h6 {
+	font-size: 21px;
+	line-height: 25px;
+	font-weight: 400;
+	letter-spacing: 0.0015em;
+}
+
+.subtitle1 {
+	font-size: 17px;
+	line-height: 20px;
+	font-weight: 400;
+	letter-spacing: 0.0015em;
+}
+
+.subtitle1 {
+	font-size: 15px;
+	line-height: 18px;
+	font-weight: 500;
+	letter-spacing: 0.001em;
+}
+
+.body1 {
+	font-size: 17px;
+	line-height: 20px;
+	font-weight: 400;
+	letter-spacing: 0.005em;
+}
+
+.body2 {
+	font-size: 15px;
+	line-height: 18px;
+	font-weight: 400;
+	letter-spacing: 0.0025em;
+}
+
+button {
+	font-size: 15px;
+	line-height: 18px;
+	font-weight: 400;
+	letter-spacing: 0.0125em;
+}
+
+a {
+	text-decoration: none;
+}
+
+caption {
+	font-size: 12px;
+	line-height: 14px;
+	font-weight: 400;
+	letter-spacing: 0.004em;
+}
+
+.overline {
+	font-size: 10px;
+	line-height: 12px;
+	font-weight: 400;
+	letter-spacing: 0.015em;
+}
+
+/* Utilities */
+.container {
+	width: 100%;
+	max-width: 1250px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+img {
+	width: 100%;
+	max-width: 100%;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	width: 100%;
+	background: var(--orange5);
+	padding: 12px 24px;
+	border: none;
+	outline: 0;
+	cursor: pointer;
+	transition: all .3s ease;
+}
+
+.btn:hover,
+.btn.active {
+	background: var(--orange10);
+}

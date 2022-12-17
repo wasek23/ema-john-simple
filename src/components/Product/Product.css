@@ -1,0 +1,35 @@
+.product {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--blue-50);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.product figure {
+	overflow: hidden;
+	margin: 8px 7px 12px 7px;
+	border-radius: 8px;
+}
+
+.product .content {
+	color: var(--blue70);
+	padding: 0 14px;
+	margin-bottom: auto;
+}
+
+.product .name {
+	margin-bottom: 11px;
+}
+
+.product .price {
+	margin-bottom: 47px;
+}
+
+.product .manufacturer {
+	margin-bottom: 11px;
+}
+
+.product .rating {
+	margin-bottom: 13px;
+}

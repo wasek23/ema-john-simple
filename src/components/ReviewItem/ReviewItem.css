@@ -1,0 +1,52 @@
+.reviewItem {
+	width: 570px;
+	max-width: 100%;
+	padding: 8px;
+	border: 1px solid var(--blue-50);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 17px;
+}
+
+.reviewItem figure {
+	width: 91px;
+	height: 91px;
+	overflow: hidden;
+	border-radius: 6px;
+}
+
+.reviewItem .details span {
+	color: var(--orange10);
+}
+
+.reviewItem .name,
+.reviewItem .price {
+	margin-bottom: 8px;
+}
+
+.reviewItem .btnDelete {
+	width: auto;
+	color: var(--red40);
+	background-color: #eb57574d;
+	padding: 11px;
+	border-radius: 50%;
+	margin-left: auto;
+	transition: all .3s ease;
+}
+
+.reviewItem .btnDelete .deleteIcon {
+	font-size: 32px;
+	color: var(--red40) !important;
+	width: 32px;
+	height: 32px;
+	transition: all .3s ease;
+}
+
+.reviewItem .btnDelete:hover {
+	background-color: var(--red40);
+}
+
+.reviewItem .btnDelete:hover .deleteIcon {
+	color: #fff !important;
+}

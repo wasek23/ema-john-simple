@@ -1,0 +1,34 @@
+.cartArea {
+	background-color: var(--orange5);
+	padding: 28px 16px;
+}
+
+.cartArea .cartDetails {
+	padding: 0 7px;
+}
+
+.cartArea h5 {
+	margin-bottom: 50px;
+}
+
+.cartArea .body1:not(:last-child) {
+	margin-bottom: 25px;
+}
+
+.cartArea h6 {
+	margin-bottom: 55px;
+}
+
+.cartArea .btn {
+	color: var(--white);
+	padding: 14px 28px;
+	border-radius: 4px;
+}
+
+.cartArea .btn.delete {
+	background: var(--red30);
+}
+
+.cartArea .btn.review {
+	background: var(--orange10);
+}

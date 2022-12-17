@@ -1,0 +1,33 @@
+.mainHeader {
+	background: var(--blue40);
+}
+
+.mainHeader nav {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.mainHeader ul {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	gap: 25px;
+}
+
+.mainHeader ul .body1 {
+	color: var(--white);
+	text-decoration: none;
+	display: inline-block;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.mainHeader ul .body1.user {
+	cursor: default;
+}
+
+.mainHeader ul .body1:hover:not(.user) {
+	color: var(--orange10);
+}

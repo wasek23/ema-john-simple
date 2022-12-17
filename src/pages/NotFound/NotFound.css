@@ -1,0 +1,15 @@
+.notFound {
+	height: calc(100vh - 80px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.notFound h1 {
+	color: var(--blue10);
+}
+
+.notFound h1 span {
+	color: var(--orange10);
+}

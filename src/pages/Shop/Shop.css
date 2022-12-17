@@ -1,0 +1,19 @@
+.shopPage {
+	display: flex;
+	justify-content: flex-end;
+	gap: 80px;
+}
+
+.shopPage .productContainer {
+	flex: 1;
+	max-width: 1220px;
+	padding: 100px 0;
+}
+
+.shopPage .cartContainer {
+	width: 264px;
+	height: 100%;
+	max-height: 100vh;
+	position: sticky;
+	top: 0;
+}
